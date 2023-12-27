@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity(name = "PESSOA")
+@Table(name = "PESSOA")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,11 +24,6 @@ public class Pessoa implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @CreatedDate
-    @Column(name = "data_inclusao",
-        nullable = true, updatable = false)
-    private Date dataInclusao;
 
     private String nome;
 
