@@ -1,5 +1,6 @@
 package com.consultascore.serasa.controller;
 
+import com.consultascore.serasa.dto.PessoaDTO;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
