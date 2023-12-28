@@ -16,4 +16,6 @@ public interface PessoaService {
 
     ResponseEntity<String> updatePessoa(Long id, PessoaDTO pessoaDTO);
 
+    ResponseEntity<String> deleteById(Long id);
+
 }

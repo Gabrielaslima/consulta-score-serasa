@@ -119,6 +119,17 @@ public class PessoaServiceImpl implements PessoaService {
 
     }
 
+    @Override
+    public ResponseEntity<String> deleteById(Long id) {
+        try {
+            pessoaRepository.deleteById(id);
+
+            return ResponseEntity.status(HttpStatus.OK).body("Pessoa deletada com sucesso!");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao deletar pessoa.");
+        }
+    }
+
     private EnderecoDTO consultaEndereco(String cep) throws URISyntaxException, IOException, InterruptedException {
 
         HttpRequest request = HttpRequest.newBuilder().uri(new URI("https://viacep.com.br/ws/" + cep + "/json/")).GET().build();

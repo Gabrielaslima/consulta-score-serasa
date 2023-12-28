@@ -44,8 +44,14 @@ public class SerasaController {
     }
 
     @GetMapping(value = "/score-descricao/{idPessoa}")
-    public ResponseEntity<?> getPessoaId(@PathVariable Long id) {
-        ResponseEntity<?> response = pessoaService.getScoreDescricaoById(id);
+    public ResponseEntity<String> getPessoaId(@PathVariable Long id) {
+        ResponseEntity<String> response = pessoaService.getScoreDescricaoById(id);
+        return response;
+    }
+
+    @DeleteMapping(value = "/pessoa/{idPessoa}")
+    public ResponseEntity<String> deletePessoa(@PathVariable Long id) {
+        ResponseEntity<String> response = pessoaService.deleteById(id);
         return response;
     }
 
