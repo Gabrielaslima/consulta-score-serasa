@@ -38,4 +38,15 @@ public class SerasaController {
         return pessoaService.listarPessoas(name, age, cep, pageable);
     }
 
+    @PutMapping(value = "/pessoa/{id}")
+    public ResponseEntity<String> updatePessoa(@PathVariable Long id, @RequestBody PessoaDTO body) {
+        return pessoaService.updatePessoa(id, body);
+    }
+
+    @GetMapping(value = "/score-descricao/{idPessoa}")
+    public ResponseEntity<?> getPessoaId(@PathVariable Long id) {
+        ResponseEntity<?> response = pessoaService.getScoreDescricaoById(id);
+        return response;
+    }
+
 }

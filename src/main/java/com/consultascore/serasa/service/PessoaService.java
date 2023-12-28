@@ -12,4 +12,8 @@ public interface PessoaService {
 
     ResponseEntity<Page<Pessoa>> listarPessoas(String name, Integer age, String cep, Pageable pageable);
 
+    ResponseEntity<String> getScoreDescricaoById(Long id);
+
+    ResponseEntity<String> updatePessoa(Long id, PessoaDTO pessoaDTO);
+
 }

@@ -14,5 +14,6 @@ import java.util.List;
 
 @Repository
 public interface IPessoaRepository extends JpaRepository<Pessoa, Long> {
-    Page<Pessoa> findByNomeContainingIgnoreCaseAndIdadeEqualsAndCepEquals(String nome, Integer idade, String cep, Pageable pageable);
+    Page<Pessoa> findByNameContainingIgnoreCaseAndAgeEqualsAndCepEquals(String name, Integer age, String cep, Pageable pageable);
+
 }
