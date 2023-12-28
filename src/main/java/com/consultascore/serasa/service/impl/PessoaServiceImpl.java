@@ -43,10 +43,10 @@ public class PessoaServiceImpl implements PessoaService {
             EnderecoDTO endereco = new ObjectMapper().readValue(response.body(), EnderecoDTO.class);
 
             Pessoa newPessoa = new Pessoa(pessoaDto);
-            newPessoa.setCidade(endereco.getLocalidade());
-            newPessoa.setLogradouro(endereco.getLogradouro());
-            newPessoa.setBairro(endereco.getBairro());
-            newPessoa.setEstado(endereco.getUf());
+            newPessoa.setCity(endereco.getLocalidade());
+            newPessoa.setPatio(endereco.getLogradouro());
+            newPessoa.setNeighborhood(endereco.getBairro());
+            newPessoa.setState(endereco.getUf());
 
             pessoaRepository.save(newPessoa);
 

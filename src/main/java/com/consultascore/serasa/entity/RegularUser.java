@@ -29,5 +29,6 @@ public class RegularUser implements Serializable {
 
     private String password;
 
+    @Enumerated(EnumType.STRING)
     private RoleEnum role;
 }

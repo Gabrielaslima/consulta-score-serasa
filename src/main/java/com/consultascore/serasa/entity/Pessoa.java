@@ -25,28 +25,26 @@ public class Pessoa implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nome;
+    private String name;
 
-    private String telefone;
+    private String phoneNumber;
 
-    private long idade;
+    private long age;
 
-    private String cidade;
+    private String city;
 
-    private String estado;
-
+    private String state;
     private long score;
 
-    private String bairro;
+    private String neighborhood;
 
-    private String logradouro;
-
+    private String patio;
     private String cep;
 
     public Pessoa(PessoaDTO pessoaDto) {
-        this.nome = pessoaDto.getNome();
-        this.telefone = pessoaDto.getTelefone();
-        this.idade = pessoaDto.getIdade();
+        this.name = pessoaDto.getName();
+        this.phoneNumber = pessoaDto.getPhoneNumber();
+        this.age = pessoaDto.getAge();
         this.score = pessoaDto.getScore();
         this.cep = pessoaDto.getCep();
     }

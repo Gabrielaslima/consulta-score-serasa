@@ -10,6 +10,6 @@ public interface PessoaService {
 
     ResponseEntity<String> cadastroPessoa(PessoaDTO pessoaDto);
 
-    ResponseEntity<Page<Pessoa>> listarPessoas(String nome, Integer idade, String cep, Pageable pageable);
+    ResponseEntity<Page<Pessoa>> listarPessoas(String name, Integer age, String cep, Pageable pageable);
 
 }

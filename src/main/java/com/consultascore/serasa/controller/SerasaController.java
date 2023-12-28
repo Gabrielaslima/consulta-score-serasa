@@ -31,11 +31,11 @@ public class SerasaController {
 
     @GetMapping
     public ResponseEntity<Page<Pessoa>> listarPessoas(
-            @RequestParam(required = false) String nome,
-            @RequestParam(required = false) Integer idade,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) Integer age,
             @RequestParam(required = false) String cep,
             Pageable pageable) {
-        return pessoaService.listarPessoas(nome, idade, cep, pageable);
+        return pessoaService.listarPessoas(name, age, cep, pageable);
     }
 
 }

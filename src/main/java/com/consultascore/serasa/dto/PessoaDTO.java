@@ -15,11 +15,11 @@ public class PessoaDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String nome;
+    private String name;
 
-    private String telefone;
+    private String phoneNumber;
 
-    private long idade;
+    private long age;
 
     private long score;
 
