@@ -7,15 +7,15 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.io.Serializable;
 
-@Entity(name = "USER")
-@Table(name = "USER")
+@Entity(name = "REGULARUSER")
+@Table(name = "REGULARUSER")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @EntityListeners(AuditingEntityListener.class)
-public class User implements Serializable {
+public class RegularUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
