@@ -13,6 +13,9 @@ public class ScoreSeed implements CommandLineRunner {
     @Autowired
     private IScoreRepository scoreRepository;
 
+    /**
+     * metodo responsavel por inserir dados na tabela de Score ao rodar o projeto
+     * */
     @Override
     public void run(String... args) throws Exception {
 

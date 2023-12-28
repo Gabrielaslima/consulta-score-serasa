@@ -3,11 +3,8 @@ package com.consultascore.serasa.entity;
 import com.consultascore.serasa.dto.PessoaDTO;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import java.io.Serializable;
-import java.util.Date;
 
 @Entity(name = "PESSOA")
 @Table(name = "PESSOA")

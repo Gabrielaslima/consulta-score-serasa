@@ -75,6 +75,9 @@ public class PessoaServiceImpl implements PessoaService {
         }
     }
 
+    /**
+     * metodo responsavel por realizar a consulta da descricao do score da pessoa
+     * */
     @Override
     public ResponseEntity<String> getScoreDescricaoById(Long id) {
 
@@ -88,6 +91,9 @@ public class PessoaServiceImpl implements PessoaService {
 
     }
 
+    /**
+     * metodo responsavel por realizar o update de pessoa
+     * */
     @Override
     public ResponseEntity<String> updatePessoa(Long id, PessoaDTO pessoaDTO) {
 
@@ -119,6 +125,9 @@ public class PessoaServiceImpl implements PessoaService {
 
     }
 
+    /**
+     * metodo responsavel por realizar o delete de pessoa
+     * */
     @Override
     public ResponseEntity<String> deleteById(Long id) {
         try {
@@ -130,6 +139,9 @@ public class PessoaServiceImpl implements PessoaService {
         }
     }
 
+    /**
+     * metodo responsavel por consultar o CEP em uma API externa (viacep)
+     * */
     private EnderecoDTO consultaEndereco(String cep) throws URISyntaxException, IOException, InterruptedException {
 
         HttpRequest request = HttpRequest.newBuilder().uri(new URI("https://viacep.com.br/ws/" + cep + "/json/")).GET().build();

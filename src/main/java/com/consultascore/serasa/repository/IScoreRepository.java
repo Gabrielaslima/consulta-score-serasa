@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IScoreRepository extends JpaRepository<Score, Long> {
-
     @Query(value = "SELECT s.scoreDescricao FROM com.consultascore.serasa.entity.Score s WHERE s.inicial <= :scorePessoa AND :scorePessoa <= s.valorFinal")
     public String findScoreDescricao(@Param("scorePessoa") Long scorePessoa);
 

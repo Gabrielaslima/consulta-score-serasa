@@ -8,7 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface IUserRepository extends JpaRepository<RegularUser, Long> {
-
     Optional<RegularUser> findByLoginEqualsAndPasswordEquals(String login, String password);
 
 }

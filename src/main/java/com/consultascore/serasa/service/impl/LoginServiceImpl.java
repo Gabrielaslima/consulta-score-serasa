@@ -21,6 +21,9 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     IUserRepository userRepository;
 
+    /**
+     * metodo responsavel por autenticar o login
+     * */
     @Override
     public Optional<Long> authentication(LoginDTO loginDto) {
 
@@ -29,6 +32,9 @@ public class LoginServiceImpl implements LoginService {
         return user.map(RegularUser::getId);
     }
 
+    /**
+     * metodo responsavel por autenticar o usuario pelo id
+     * */
     public RegularUser authenticateUserFromId(String id) {
 
         Optional<RegularUser> user = userRepository.findById(Long.valueOf(id));

@@ -13,6 +13,9 @@ public class UserSeed implements CommandLineRunner {
     @Autowired
     private IUserRepository repository;
 
+    /**
+     * metodo responsavel por inserir usuario ADMIN e USER no banco de dados ao rodar o projeto
+     * */
     @Override
     public void run(String... args) throws Exception {
 

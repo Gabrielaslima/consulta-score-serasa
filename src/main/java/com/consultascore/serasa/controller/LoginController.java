@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,7 +27,7 @@ public class LoginController {
     @Autowired
     JwtTokenUtil jwtTokenUtil;
 
-    @PostMapping(value = "")
+    @PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE } )
     public ResponseEntity<String> loginUser(@RequestBody LoginDTO login) {
 
         Optional<Long> auth = loginService.authentication(login);
