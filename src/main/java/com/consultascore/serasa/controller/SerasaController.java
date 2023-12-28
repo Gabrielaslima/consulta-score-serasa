@@ -11,6 +11,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+
 @RestController
 @OpenAPIDefinition(info = @Info(title = "Cadastro e consulta de Score API", version = "0.0.1-SNAPSHOT", description = "API de cadastro e consulta de score de pessoa"))
 @RequestMapping("/api/v1/serasa")
@@ -22,9 +25,8 @@ public class SerasaController {
     /**
      * */
     @PostMapping(value = "/pessoa")
-    public ResponseEntity<String> postPessoa(@RequestBody PessoaDTO body) {
-        ResponseEntity<String> response = pessoaService.cadastroPessoa(body);
-        return response;
+    public ResponseEntity<String> postPessoa(@RequestBody PessoaDTO body) throws URISyntaxException, IOException, InterruptedException {
+        return pessoaService.cadastroPessoa(body);
     }
 
     @GetMapping

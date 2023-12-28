@@ -47,11 +47,7 @@ public class Pessoa implements Serializable {
         this.nome = pessoaDto.getNome();
         this.telefone = pessoaDto.getTelefone();
         this.idade = pessoaDto.getIdade();
-        this.cidade = pessoaDto.getCidade();
-        this.estado = pessoaDto.getEstado();
         this.score = pessoaDto.getScore();
-        this.bairro = pessoaDto.getBairro();
-        this.logradouro = pessoaDto.getLogradouro();
         this.cep = pessoaDto.getCep();
     }
 

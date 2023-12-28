@@ -21,15 +21,7 @@ public class PessoaDTO implements Serializable {
 
     private long idade;
 
-    private String cidade;
-
-    private String estado;
-
     private long score;
-
-    private String bairro;
-
-    private String logradouro;
 
     private String cep;
 }

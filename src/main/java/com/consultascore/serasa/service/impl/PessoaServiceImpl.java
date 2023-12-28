@@ -1,21 +1,24 @@
 package com.consultascore.serasa.service.impl;
 
 import com.consultascore.serasa.dto.PessoaDTO;
+import com.consultascore.serasa.dto.EnderecoDTO;
 import com.consultascore.serasa.entity.Pessoa;
 import com.consultascore.serasa.repository.IPessoaRepository;
 import com.consultascore.serasa.service.PessoaService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 
 
 @Slf4j
@@ -33,7 +36,18 @@ public class PessoaServiceImpl implements PessoaService {
     public ResponseEntity<String> cadastroPessoa(PessoaDTO pessoaDto) {
         //tenta cadastrar pessoa e caso sucesso retorna status 201 CREATED e caso der erro retorna status 500 ERROR
         try {
+            HttpRequest request = HttpRequest.newBuilder().uri(new URI("https://viacep.com.br/ws/" + pessoaDto.getCep() + "/json/")).GET().build();
+            HttpClient client = HttpClient.newBuilder().build();
+            HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            EnderecoDTO endereco = new ObjectMapper().readValue(response.body(), EnderecoDTO.class);
+
             Pessoa newPessoa = new Pessoa(pessoaDto);
+            newPessoa.setCidade(endereco.getLocalidade());
+            newPessoa.setLogradouro(endereco.getLogradouro());
+            newPessoa.setBairro(endereco.getBairro());
+            newPessoa.setEstado(endereco.getUf());
+
             pessoaRepository.save(newPessoa);
 
             return ResponseEntity.status(HttpStatus.CREATED).body("Cadastrado com sucesso!");
