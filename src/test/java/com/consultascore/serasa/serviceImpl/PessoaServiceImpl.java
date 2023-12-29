@@ -12,10 +12,16 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @SpringBootTest
@@ -50,18 +56,28 @@ public class PessoaServiceImpl {
     }
 
     @Test
-    public void testGetDescricaoById() {
-
+    public void listarPessoas() {
         Pessoa pessoa = new Pessoa();
         pessoa.setScore(1000);
-        pessoa.setId(1L);
+        pessoa.setPhoneNumber("16981513857");
+        pessoa.setCep("14811430");
+        pessoa.setName("Teste");
+        List<Pessoa> lista = new ArrayList<>();
+        lista.add(pessoa);
+        Page<Pessoa> page = new PageImpl<Pessoa>(lista);
 
-        Optional<Pessoa> optionalPessoa = Optional.of(pessoa);
+        Pageable pageable= PageRequest.of(0, 5);
+        Mockito.when(pessoaRepository.findByNameContainingIgnoreCaseAndAgeEqualsAndCepEquals("teste", 20, "11111111", pageable)).thenReturn(page);
 
-        Mockito.when(pessoaRepository.findById(1L)).thenReturn(optionalPessoa);
-        ResponseEntity<String> response = pessoaService.getScoreDescricaoById(1L);
+        ResponseEntity<Page<Pessoa>> response = pessoaService.listarPessoas("teste", 20, "11111111", pageable);
 
         Assertions.assertEquals(response.getStatusCode(), HttpStatus.OK);
+    }
+
+    @Test
+    public void deleteById() {
+       ResponseEntity<String> response = pessoaService.deleteById(1L);
+       Assertions.assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 
 }
