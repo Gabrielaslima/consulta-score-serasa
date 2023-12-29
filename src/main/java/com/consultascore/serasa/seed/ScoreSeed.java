@@ -27,23 +27,23 @@ public class ScoreSeed implements CommandLineRunner {
         scoreRepository.save(scoreInsuficiente);
 
         Score scoreInaceitável = new Score();
-        scoreInsuficiente.setScoreDescricao("Inaceitável");
-        scoreInsuficiente.setInicial(201);
-        scoreInsuficiente.setValorFinal(500);
+        scoreInaceitável.setScoreDescricao("Inaceitável");
+        scoreInaceitável.setInicial(201);
+        scoreInaceitável.setValorFinal(500);
 
         scoreRepository.save(scoreInaceitável);
 
         Score scoreAceitável = new Score();
-        scoreInsuficiente.setScoreDescricao("Aceitável");
-        scoreInsuficiente.setInicial(501);
-        scoreInsuficiente.setValorFinal(700);
+        scoreAceitável.setScoreDescricao("Aceitável");
+        scoreAceitável.setInicial(501);
+        scoreAceitável.setValorFinal(700);
 
         scoreRepository.save(scoreAceitável);
 
         Score scoreRecomendável = new Score();
-        scoreInsuficiente.setScoreDescricao("Recomendável");
-        scoreInsuficiente.setInicial(701);
-        scoreInsuficiente.setValorFinal(1000);
+        scoreRecomendável.setScoreDescricao("Recomendável");
+        scoreRecomendável.setInicial(701);
+        scoreRecomendável.setValorFinal(1000);
 
         scoreRepository.save(scoreRecomendável);
 

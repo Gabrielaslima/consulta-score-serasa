@@ -2,9 +2,11 @@ package com.consultascore.serasa.config;
 
 import com.consultascore.serasa.service.LoginService;
 import jakarta.servlet.Filter;
+import org.apache.catalina.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -60,22 +62,43 @@ public class WebSecurityConfig {
      * */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity, HandlerMappingIntrospector introspector) throws Exception {
+//        MvcRequestMatcher mvcRequestMatcherLogin = new MvcRequestMatcher(introspector, "/**");
+//        mvcRequestMatcherLogin.setServletPath("/api/v1/serasa/login");
+//        MvcRequestMatcher mvcRequestMatcherSwagger = new MvcRequestMatcher(introspector, "/**");
+//        mvcRequestMatcherSwagger.setServletPath("/swagger-ui/index.html#/**");
+//        MvcRequestMatcher mvcRequestMatcherH2 = new MvcRequestMatcher(introspector, "/**");
+//        mvcRequestMatcherH2.setServletPath("/h2-console/");
+//
+//        httpSecurity.csrf(AbstractHttpConfigurer::disable).exceptionHandling(ex -> ex.authenticationEntryPoint(jwtAuthenticationEntryPoint))
+//                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+//                .authorizeHttpRequests(authHttp -> {
+//                    authHttp.requestMatchers(mvcRequestMatcherLogin, mvcRequestMatcherSwagger, mvcRequestMatcherH2).permitAll().anyRequest().authenticated();
+//                });
+//        httpSecurity.authenticationProvider(authenticationProvider());
+//        httpSecurity.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+
         MvcRequestMatcher mvcRequestMatcherLogin = new MvcRequestMatcher(introspector, "/**");
         mvcRequestMatcherLogin.setServletPath("/api/v1/serasa/login");
         MvcRequestMatcher mvcRequestMatcherSwagger = new MvcRequestMatcher(introspector, "/**");
-        mvcRequestMatcherSwagger.setServletPath("/swagger-ui/index.html#/**");
+        mvcRequestMatcherSwagger.setServletPath("/swagger-ui/**");
         MvcRequestMatcher mvcRequestMatcherH2 = new MvcRequestMatcher(introspector, "/**");
-        mvcRequestMatcherH2.setServletPath("/h2-console/");
+        mvcRequestMatcherH2.setServletPath("/h2-console/**");
+        MvcRequestMatcher mvcRequestMatcherScore = new MvcRequestMatcher(introspector, "/**");
+        mvcRequestMatcherScore.setServletPath("/api/v1/serasa/score");
 
-        httpSecurity.csrf(AbstractHttpConfigurer::disable).exceptionHandling(ex -> ex.authenticationEntryPoint(jwtAuthenticationEntryPoint))
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(authHttp -> {
-                    authHttp.requestMatchers(mvcRequestMatcherLogin, mvcRequestMatcherSwagger, mvcRequestMatcherH2).permitAll().anyRequest().authenticated();
-                });
+        httpSecurity.securityMatcher("/api/**").authorizeHttpRequests(rmr -> rmr
+                .requestMatchers(mvcRequestMatcherScore, mvcRequestMatcherLogin, mvcRequestMatcherH2, mvcRequestMatcherSwagger).permitAll().anyRequest().authenticated()
+        ).httpBasic(httpbc -> httpbc
+                .authenticationEntryPoint(jwtAuthenticationEntryPoint)
+        ).sessionManagement(smc -> smc
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        ).csrf(AbstractHttpConfigurer::disable);
+
         httpSecurity.authenticationProvider(authenticationProvider());
         httpSecurity.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
         return httpSecurity.build();
+
     }
 
 }

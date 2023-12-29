@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 @RestController
-@OpenAPIDefinition(info = @Info(title = "Login de pessoa na API", version = "0.0.1-SNAPSHOT", description = "API de login de pessoa"))
+@OpenAPIDefinition(info = @Info(title = "Cadastro e consulta de score de pessoas API", version = "0.0.1-SNAPSHOT", description = "API de cadastro e consulta de score de pessoas"))
 @RequestMapping("/api/v1/serasa/login")
 public class LoginController {
 
