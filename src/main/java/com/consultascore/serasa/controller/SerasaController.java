@@ -23,6 +23,7 @@ public class SerasaController {
     private PessoaService pessoaService;
 
     /**
+     * Endpoint de cadastro de pessoa (somente ADMIN)
      * */
     @PostMapping(value = "/pessoa", produces = { MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<String> postPessoa(SecurityContextHolder context, @RequestBody PessoaDTO body) {
@@ -35,6 +36,9 @@ public class SerasaController {
         return pessoaService.cadastroPessoa(body);
     }
 
+    /**
+     * Endpoint de de consulta de pessoas paginadas com filtro por name, age e cep
+     * */
     @GetMapping(value="/pessoa-pageable", produces = { MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<Page<Pessoa>> listarPessoas(
             @RequestParam(required = false) String name,
@@ -44,6 +48,9 @@ public class SerasaController {
         return pessoaService.listarPessoas(name, age, cep, pageable);
     }
 
+    /**
+     * Endpoint para update de pessoa
+     * */
     @PutMapping(value = "/pessoa/{idPessoa}", produces = { MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<String> updatePessoa(SecurityContextHolder context, @PathVariable Long idPessoa, @RequestBody PessoaDTO body) {
 
@@ -55,12 +62,18 @@ public class SerasaController {
         return pessoaService.updatePessoa(idPessoa, body);
     }
 
+    /**
+     * Endpoint de consulta da descricao do score da pessoa
+     * */
     @GetMapping(value = "/score-descricao/{idPessoa}", produces = { MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<String> getPessoaId(@PathVariable Long idPessoa) {
         ResponseEntity<String> response = pessoaService.getScoreDescricaoById(idPessoa);
         return response;
     }
 
+    /**
+     * Endpoint de deletar pessoa
+     * */
     @DeleteMapping(value = "/pessoa/{idPessoa}", produces = { MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<String> deletePessoa(SecurityContextHolder context, @PathVariable Long idPessoa) {
 

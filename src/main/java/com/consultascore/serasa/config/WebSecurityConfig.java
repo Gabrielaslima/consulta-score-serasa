@@ -62,20 +62,6 @@ public class WebSecurityConfig {
      * */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity, HandlerMappingIntrospector introspector) throws Exception {
-//        MvcRequestMatcher mvcRequestMatcherLogin = new MvcRequestMatcher(introspector, "/**");
-//        mvcRequestMatcherLogin.setServletPath("/api/v1/serasa/login");
-//        MvcRequestMatcher mvcRequestMatcherSwagger = new MvcRequestMatcher(introspector, "/**");
-//        mvcRequestMatcherSwagger.setServletPath("/swagger-ui/index.html#/**");
-//        MvcRequestMatcher mvcRequestMatcherH2 = new MvcRequestMatcher(introspector, "/**");
-//        mvcRequestMatcherH2.setServletPath("/h2-console/");
-//
-//        httpSecurity.csrf(AbstractHttpConfigurer::disable).exceptionHandling(ex -> ex.authenticationEntryPoint(jwtAuthenticationEntryPoint))
-//                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-//                .authorizeHttpRequests(authHttp -> {
-//                    authHttp.requestMatchers(mvcRequestMatcherLogin, mvcRequestMatcherSwagger, mvcRequestMatcherH2).permitAll().anyRequest().authenticated();
-//                });
-//        httpSecurity.authenticationProvider(authenticationProvider());
-//        httpSecurity.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
         MvcRequestMatcher mvcRequestMatcherLogin = new MvcRequestMatcher(introspector, "/**");
         mvcRequestMatcherLogin.setServletPath("/api/v1/serasa/login");
