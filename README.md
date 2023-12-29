@@ -11,3 +11,5 @@ password: user
 -Utilizar o Postman para consultar os serviços do SerasaController pois apenas o endpoint de Login para autenticaçao do token esta liberado no swagger
 
 -Adicionar na aba Authorization do request o token de autenticacao por exemplo: Bearer + token
+
+-Configuraçoes e chaves de autenticaçao tanto do banco H2 quanto da secret JWT estao no application.properties
