@@ -115,9 +115,9 @@ public class PessoaServiceImpl implements PessoaService {
 
                 pessoaRepository.save(existingPessoa.get());
 
-                return ResponseEntity.status(HttpStatus.CREATED).body("Pessoa atualizada com sucesso!");
+                return ResponseEntity.status(HttpStatus.CREATED).body("Pessoa atualizada com sucesso");
             } else {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Pessoa inexistente na base de dados");
+                return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Pessoa não encontrada");
             }
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao atualizar pessoa");
