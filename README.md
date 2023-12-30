@@ -1,5 +1,7 @@
 -Usuarios de admin e user sao cadastrados automaticamente no banco assim que a aplicaçao esta no ar
 
+-Tabela de Score é cadastrada automaticamente no banco assim que a aplicaçao esta no ar
+
 Usuario: testeAdmin
 password: admin
 
