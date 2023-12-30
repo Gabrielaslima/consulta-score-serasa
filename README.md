@@ -1,6 +1,6 @@
--Usuarios de admin e user sao cadastrados automaticamente no banco assim que a aplicaçao esta no ar
+-Usuarios de admin e user sao cadastrados automaticamente no banco na tabela REGULARUSER assim que a aplicaçao esta no ar
 
--Tabela de Score é cadastrada automaticamente no banco assim que a aplicaçao esta no ar
+-Tabela de Score é cadastrada automaticamente no banco na tabela SCORE assim que a aplicaçao esta no ar
 
 Usuario: testeAdmin
 password: admin
@@ -15,3 +15,5 @@ password: user
 -Adicionar na aba Authorization do request o token de autenticacao por exemplo: Bearer + token
 
 -Configuraçoes e chaves de autenticaçao tanto do banco H2 quanto da secret JWT estao no application.properties
+
+-Utilizar jdbc-url que esta no application.properties
