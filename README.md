@@ -6,11 +6,13 @@ Usuario: testeAdmin
 password: admin
 
 Usuario: testeUser
-password: user
-
+password: user 
+ 
 -Utilizar jdbc-url ao tentar se conectar no banco de dados H2 que esta no application.properties
 
 -Utilizar endpoint de login no swagger para gerar o token de autenticaçao JTW que é retornado nos headers do response
+
+-Cadastrar inicialmente uma pessoa atraves do Postman utilizando o endpoint POST /api/v1/serasa/score/pessoa
 
 -Utilizar o Postman para consultar os serviços do SerasaController pois apenas o endpoint de Login para autenticaçao do token esta liberado no swagger
 
